@@ -54,6 +54,40 @@ def parse_bsharp(code):
 
     return parse_block()
 
+def generate_java(ast):
+    if ast.node_type == 'block':
+        return '\n'.join(generate_java(child) for child in ast.children)
+    elif ast.node_type == 'function':
+        params = ', '.join(f'var {param}' for param in ast.children[0])
+        body = generate_java(ast.children[1])
+        return f'public static Object {ast.value}({params}) {{\n    {body.replace("\n", "\n    ")}\n}}'
+    elif ast.node_type == 'call':
+        args = ', '.join(ast.children)
+        return f'{ast.value}({args});'
+    elif ast.node_type == 'variable':
+        return ast.value
+    return ''
+
+# java_code = generate_java(ast)
+# print(java_code)
+
+def generate_python(ast):
+    if ast.node_type == 'block':
+        return '\n'.join(generate_python(child) for child in ast.children)
+    elif ast.node_type == 'function':
+        params = ', '.join(ast.children[0])
+        body = generate_python(ast.children[1])
+        return f'def {ast.value}({params}):\n    {body.replace("\n", "\n    ")}'
+    elif ast.node_type == 'call':
+        args = ', '.join(ast.children)
+        return f'{ast.value}({args})'
+    elif ast.node_type == 'variable':
+        return ast.value
+    return ''
+
+# python_code = generate_python(ast)
+# print(python_code)
+
 def generate_csharp(ast):
     if ast.node_type == 'block':
         return '\n'.join(generate_csharp(child) for child in ast.children)
