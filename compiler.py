@@ -1,6 +1,6 @@
-# Compilador simples para B#.
+# Simple Compiler for B#.
 
-# Compilador Completo
+# Complete Compiler
 
 import re
 
@@ -103,14 +103,14 @@ def generate_csharp(ast):
     return ''
 
 bsharp_code = """
-// Importando uma biblioteca financeira
+// Importing a financial library
 import finance_lib as fl
 
-// Função para calcular a média móvel
+// Function to calculate moving average
 func moving_average(prices, window_size)
     return fl.moving_average(prices, window_size)
 
-// Usando a função
+// Using the function
 prices = [100, 102, 101, 105, 110]
 window_size = 3
 avg = moving_average(prices, window_size)
