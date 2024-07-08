@@ -2,71 +2,72 @@
 
 ## B# a new language for B3
 
-Para criar a linguagem B# que roda em cima de C#, Java e Python, aproveitando as melhores práticas e bibliotecas das linguagens, e focada no mercado financeiro com suporte para inteligência artificial, vamos seguir uma abordagem em etapas. 
+To create the B# language that runs on top of C#, Java, and Python, leveraging the best practices and libraries of these languages, and focused on the financial market with support for artificial intelligence, we will follow a step-by-step approach.
 
-## Definição da Sintaxe e Semântica:
+## Definition of Syntax and Semantics:
 
-Simplificação da sintaxe para torná-la mais fácil de aprender.
+Simplification of the syntax to make it easier to learn.
 
-Reutilização de conceitos familiares do C# para facilitar a curva de aprendizagem.
+Reuse of familiar concepts from C# to ease the learning curve.
 
-Construção do Compilador/Interpretador:
+## Building the Compiler/Interpreter:
 
-Traduzir B# para C# intermediário que depois é compilado para bytecode executável.
+Translate B# to intermediate C# which is then compiled to executable bytecode.
 
-## Criação de Bibliotecas e Ferramentas:
+## Creation of Libraries and Tools:
 
-Desenvolvimento de bibliotecas específicas para o mercado financeiro e inteligência artificial.
+Development of specific libraries for the financial market and artificial intelligence.
 
-Ferramentas de desenvolvimento como IDEs e depuradores.
+Development tools such as IDEs and debuggers.
 
-1. Definição da Sintaxe e Semântica
+Definition of Syntax and Semantics
 
-Diretrizes de Design
+Design Guidelines
 
-Sintaxe Simplificada: Inspirada em Python, mas aproveitando a familiaridade do C#.
+Simplified Syntax: Inspired by Python but leveraging the familiarity of C#.
 
-Tipagem Dinâmica: Menos verbosidade na definição de tipos.
+Dynamic Typing: Less verbosity in type definitions.
 
-Interoperabilidade: Facilitar o uso de bibliotecas existentes de C#.
+Interoperability: Facilitate the use of existing C# libraries.
 
-Foco em IA e Finanças: Bibliotecas padrão para operações financeiras e inteligência artificial.
+Focus on AI and Finance: Standard libraries for financial operations and artificial intelligence.
 
-Exemplo de Sintaxe
+Example Syntax
 
-Vamos criar exemplos simples de código B# para ilustrar a sintaxe simplificada.
+Let's create simple examples of B# code to illustrate the simplified syntax.
 
-## Comentários
+## Comments
 
 ```bsharp
 
-// Este é um comentário de linha única
+// This is a single line comment
 
 /*
-   Este é um comentário de múltiplas linhas
+   This is a multi-line comment
 */
 
 ```
 
-## Definição de Função
+## Function Definition
 
 ```bsharp
 
-func somar(a, b)
+func add(a, b)
     return a + b
 
 ```
 
-## Condicionais
+## Conditionals
 
 ```bsharp
 
 x = 10
 
 if x > 5
-    print("x é maior que 5")
+    print("x is greater than 5")
 else
-    print("x é menor ou igual a 5")
+    print("x is less than or equal to 5")
+
 
 ```
 
@@ -80,7 +81,7 @@ for i in 1..10
 
 ```
 
-## Importação de Bibliotecas
+## Importing Libraries
 
 ```bsharp
 
@@ -94,11 +95,11 @@ print(avg)
 
 ```
 
-2. Construção do Compilador/Interpretador
+2. Building the Compiler/Interpreter
 
-O compilador de B# traduzirá o código B# para C# intermediário. Vamos criar um compilador inicial que faz essa tradução.
+The B# compiler will translate B# code into intermediate C#. Let's create an initial compiler that performs this translation.
 
-Frontend: Analisador de Sintaxe
+Frontend: Syntax Analyzer
 
 ```python
 
@@ -164,9 +165,9 @@ print(ast)
 
 ```
 
-Backend: Tradutor para C#
+Backend: Translator for C#
 
-Vamos implementar o backend para traduzir a AST gerada para código C#.
+We will implement the backend to translate the generated AST into C# code.
 
 ```python
 
@@ -189,30 +190,30 @@ print(csharp_code)
 
 ```
 
-3. Criação de Bibliotecas e Ferramentas
+3. Creation of Libraries and Tools
 
-Bibliotecas Financeiras e de IA
+Financial and AI Libraries
 
-Desenvolver bibliotecas específicas para o mercado financeiro e inteligência artificial, facilitando a integração com APIs e frameworks de IA como ML.NET.
+Develop specific libraries for the financial market and artificial intelligence, facilitating integration with APIs and AI frameworks like ML.NET.
 
-Ferramentas de Desenvolvimento
+Development Tools
 
-Desenvolver um IDE ou plugins para editores de código populares (VS Code, Visual Studio) com suporte para B#, incluindo:
+Develop an IDE or plugins for popular code editors (VS Code, Visual Studio) with support for B#, including:
 
-Destaque de Sintaxe: Suporte para a sintaxe de B#.
+Syntax Highlighting: Support for B# syntax.
 
-Autocompletar: Sugestões de código em tempo real.
+Auto-complete: Real-time code suggestions.
 
-Depurador: Ferramentas de depuração para inspecionar variáveis e o fluxo de execução.
+Debugger: Debugging tools to inspect variables and execution flow.
 
-Próximos Passos
+Next Steps
 
-Refinamento da Sintaxe de B#: Adicionar suporte para mais construções da linguagem (condicionais, loops, etc.).
+Refinement of B# Syntax: Add support for more language constructs (conditionals, loops, etc.).
 
-Melhorar o Frontend: Tornar o analisador mais robusto e capaz de gerar uma AST mais detalhada.
+Enhance the Frontend: Make the analyzer more robust and capable of generating a more detailed AST.
 
-Completar o Backend: Ampliar o tradutor para C# para suportar todas as construções de linguagem necessárias.
+Complete the Backend: Expand the C# translator to support all necessary language constructs.
 
-Ferramentas de Desenvolvimento: Desenvolver um IDE ou plugins para editores de código populares com suporte para B#.
+Development Tools: Develop an IDE or plugins for popular code editors with B# support.
 
-Documentação e Tutoriais: Criar documentação clara e tutoriais passo a passo para ajudar novos usuários a aprender B# rapidamente.
+Documentation and Tutorials: Create clear documentation and step-by-step tutorials to help new users learn B# quickly.
