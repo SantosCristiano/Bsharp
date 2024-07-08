@@ -2,7 +2,7 @@
 
 ## B# a new language for B3
 
-To create the B# language that runs on top of C#, Java, and Python, leveraging the best practices and libraries of these languages, and focused on the financial market with support for artificial intelligence, we will follow a step-by-step approach.
+To create the B# language that runs on top of C#, Java and Python, leveraging the best practices and libraries of these languages, and focused on the financial market with support for artificial intelligence, we will follow a step-by-step approach.
 
 ## Definition of Syntax and Semantics:
 
