@@ -4,55 +4,64 @@
 
 import re
 
+
 class ASTNode:
     def __init__(self, node_type, value=None, children=None):
         self.node_type = node_type
         self.value = value
         self.children = children or []
 
+
 def parse_bsharp(code):
     tokens = re.findall(r'\w+|\S', code)
     index = 0
-    
+
     def parse_expression():
         nonlocal index
-        if tokens[index] == 'func':
-            index += 1
-            name = tokens[index]
-            index += 1
-            params = []
-            while tokens[index] != ')':
-                if tokens[index] != ',':
-                    params.append(tokens[index])
+        if index < len(tokens):
+            if tokens[index] == 'func':
                 index += 1
-            index += 1  # skip ')'
-            body = parse_block()
-            return ASTNode('function', name, [params, body])
-        else:
-            name = tokens[index]
-            index += 1
-            if tokens[index] == '(':
-                index += 1
-                args = []
-                while tokens[index] != ')':
-                    if tokens[index] != ',':
-                        args.append(tokens[index])
+                if index < len(tokens):
+                    name = tokens[index]
                     index += 1
-                index += 1  # skip ')'
-                return ASTNode('call', name, args)
+                    params = []
+                    while index < len(tokens) and tokens[index] != ')':
+                        if tokens[index] != ',':
+                            params.append(tokens[index])
+                        index += 1
+                    index += 1  # skip ')'
+                    body = parse_block()
+                    return ASTNode('function', name, [params, body])
             else:
-                return ASTNode('variable', name)
+                name = tokens[index]
+                index += 1
+                if index < len(tokens) and tokens[index] == '(':
+                    index += 1
+                    args = []
+                    while index < len(tokens) and tokens[index] != ')':
+                        if tokens[index] != ',':
+                            args.append(tokens[index])
+                        index += 1
+                    index += 1  # skip ')'
+                    return ASTNode('call', name, args)
+                else:
+                    return ASTNode('variable', name)
+        return None
 
     def parse_block():
         nonlocal index
         statements = []
         while index < len(tokens) and tokens[index] != 'end':
-            statements.append(parse_expression())
-            if tokens[index] == 'end':
+            expr = parse_expression()
+            if expr:
+                statements.append(expr)
+            if index < len(tokens) and tokens[index] == 'end':
+                index += 1
                 break
         return ASTNode('block', children=statements)
 
     return parse_block()
+
 
 def generate_java(ast):
     if ast.node_type == 'block':
@@ -67,6 +76,7 @@ def generate_java(ast):
     elif ast.node_type == 'variable':
         return ast.value
     return ''
+
 
 # java_code = generate_java(ast)
 # print(java_code)
@@ -85,6 +95,7 @@ def generate_python(ast):
         return ast.value
     return ''
 
+
 # python_code = generate_python(ast)
 # print(python_code)
 
@@ -102,6 +113,7 @@ def generate_csharp(ast):
         return ast.value
     return ''
 
+
 bsharp_code = """
 // Importing a financial library
 import finance_lib as fl
@@ -118,5 +130,8 @@ print(avg)
 """
 
 ast = parse_bsharp(bsharp_code)
-csharp_code = generate_csharp(ast)
-print(csharp_code)
+if ast:
+    csharp_code = generate_csharp(ast)
+    print(csharp_code)
+else:
+    print("Failed to parse B# code.")
