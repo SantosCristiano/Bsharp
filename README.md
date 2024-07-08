@@ -4,8 +4,6 @@
 
 Para criar a linguagem B# que roda em cima de C#, Java e Python, aproveitando as melhores práticas e bibliotecas das linguagens, e focada no mercado financeiro com suporte para inteligência artificial, vamos seguir uma abordagem em etapas. 
 
-# Essa abordagem inclui:
-
 ## Definição da Sintaxe e Semântica:
 
 Simplificação da sintaxe para torná-la mais fácil de aprender.
